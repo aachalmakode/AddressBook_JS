@@ -1,30 +1,87 @@
-console.log("Welcome to address book system")
 class Contact {
-
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNumber;
-    email;
-
-    constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    
+    constructor(...params) {
+        this.firstName = params[0];
+        this.lastName = params[1];
+        this.address = params[2];
+        this.city = params[3];
+        this.state = params[4];
+        this.zip = params[5];
+        this.phoneNumber = params[6];
+        this.email = params[7];
     }
-
-    toString() {
-        return "First name: " + this.firstName + "\nLast name: " + this.lastName + "\nAddress: " + this.address + "\nCity: " + this.city + "\nState: " + this.state + "\nZip: " + this.zip + "\nPhone number: " + this.phoneNumber + "\nEmail: " + this.email;
-    }
+// Getter & Setter method and validate contact
+get firstName() {
+    return this.is_firstName;
+  }
+  set firstName(firstName) {
+    let firstNameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+    if (firstNameRegex.test(firstName)) this.is_firstName = firstName;
+    else  "Invalid First name";
+  }
+  get lastName() {
+    return this.is_lastName;
+  }
+  set lastName(lastName) {
+    let lastNameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+    if (lastNameRegex.test(lastName)) this.is_lastName = lastName;
+    else  "Invalid Last name";
+  }
+  get address() {
+    return this.is_address;
+  }
+  set address(address) {
+    let addressRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+    if (addressRegex.test(address)) this.is_address = address;
+    else  "Invalid address";
+  }
+  get city() {
+    return this.is_city;
+  }
+  set city(city) {
+    let cityRegex = RegExp("^[A-Za-z]{2,}$");
+    if (cityRegex.test(city)) this.is_city = city;
+    else  "Invalid City name";
+  }
+  get state() {
+    return this.is_state;
+  }
+  set state(state) {
+    let stateRegex = RegExp("^[A-Za-z]{2,}$");
+    if (stateRegex.test(state)) this.is_state = state;
+    else  "Invalid State name";
+  }
+  get zip() {
+    return this.is_zip;
+  }
+  set zip(zip) {
+    let zipRegex = RegExp("^[0-9]{6}$");
+    if (zipRegex.test(zip)) this.is_zip = this.zip;
+    else  "Invalid Zipcode";
+  }
+  get phoneNumber() {
+    return this.is_phoneNumber;
+  }
+  set phoneNumber(phoneNumber) {
+    let phoneNumberRegex = RegExp("^[0-9]{2}\\s{0,1}[0-9]{10}$");
+    if (phoneNumberRegex.test(phoneNumber)) this.is_phoneNumber = phoneNumber;
+    else  "Invalid Phone Number";
+  }
+  get email() {
+    return this.is_email;
+  }
+  set email(email) {
+    let emailRegex = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+    if (emailRegex.test(this.email)) this.is_email = email;
+    else "Invalid Email";
+  }
+//To string method for displaying contacts
+toString() {
+    return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Address: " + this.address + " City: " + this.city
+        + " State: " + this.state + " Zipcode: " + this.zip + " Phone Number: " + this.phoneNumber + " Email: " + this.email;
 }
-
-let contact = new Contact("Aachal", "Makode", "Nirmala colony", "Amravati", "Maharashtra", "444602", "7777744499", "aachalmako@gmail.com");
+}
+let contact = new Contact("Aachal", "Makode", "Nirmala colony", "Amravati", 
+                          "Maharashtra", "444602", "91 99966678443", "aachal.makode@gmail.com");
 console.log(contact.toString());
+    
